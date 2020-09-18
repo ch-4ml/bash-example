@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 Manager() {
     while [ true ]
         do
@@ -68,7 +67,8 @@ RemoveFile() {
                 echo -e "\033[1;31merror: File not found: $file\033[0m"
                 return 1
             elif [ -d $file ]; then
-                echo -e "\033[1;31merror: $file is a directory.\033[0m"
+                echo -e "\033[1;31merror: $file is not a file.\033[0m"
+                return 1
             fi
         done
         rm $*
@@ -113,7 +113,7 @@ RemoveDir() {
             fi
         done
         rm -r $*
-        echo "Removed directory(s)."
+        echo -e "\033[1;32mRemoved directory(s).\033[0m"
     fi
 }
 
@@ -129,7 +129,7 @@ MoveDir() {
             fi
         done
         mv $*
-        echo "Moved directory(s)."
+        echo -e "\033[1;32mMoved directory(s).\033[0m"
     fi
 }
 
